@@ -4,4 +4,7 @@ define host{
 	address		example.org
 	use		base-host
 	hostgroups	decoded-web
+	_MYSQL_USER     mysql-user
+	_MYSQL_PASS	mysql-pass
+        _SOLR_URL       myhost_www_dev
 	}
