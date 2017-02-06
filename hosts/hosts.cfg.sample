@@ -7,4 +7,5 @@ define host{
 	_MYSQL_USER     mysql-user
 	_MYSQL_PASS	mysql-pass
         _SOLR_URL       myhost_www_dev
+	_SOLR_PORT	8983
 	}
