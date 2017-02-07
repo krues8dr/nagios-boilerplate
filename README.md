@@ -183,7 +183,7 @@ dont_blame_nrpe=1
 Then we can start the nrpe service.
 
 ```
-/etc/init.d/nagios-nrpe-server
+/etc/init.d/nagios-nrpe-server start
 ```
 
 ### NRPE on RHEL/Fedora/CentOS
