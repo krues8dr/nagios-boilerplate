@@ -112,7 +112,12 @@ Now install our dev tools.
 apt-get install libssl-dev dpatch debhelper libwrap0-dev autotools-dev build-essential fakeroot hardening-includes
 ```
 
-We'll be using `libssl` but it's not in an obvious place
+We'll be using `libssl` but it's not in an obvious place, so we'll want to link it.
+
+```
+ln -s /usr/lib/x86_64-linux-gnu/libssl.so /usr/lib/libssl.so
+```
+
 
 Download the source for nrpe from APT.
 
