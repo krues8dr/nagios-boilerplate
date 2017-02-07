@@ -232,3 +232,11 @@ the `--enable-command-args` flag, per above.
 
 If you receive an error about not being able to make the SSL handshake, check
 that the nagios server is in the `allowed_hosts` list, per above.
+
+If you can't login to the web admin, make sure that the `passwd` file exists in
+`/etc/nagios` and is readable by the webserver.  It must have the `nagiosadmin`
+user, which we use to login.  You can change the password for this user:
+
+```
+htpasswd /etc/nagios/passwd nagiosadmin
+```
