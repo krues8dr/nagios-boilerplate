@@ -1,8 +1,43 @@
 # Nagios Configuration
 
-## Default Groups
+## Overview
 
-Hostgroups and their checks are set in [objects/hostgroups.cfg](objects/hostgroups.cfg) :
+This configuration uses templates to make configuration quick and relatively
+easy.
+
+The main stumbling block in creating templates for Nagios is that instead of the
+usual object-inheritance that most programmers are familiar with, it instead
+reverses the relationships.  As a result, a "parent" template must list the
+objects that inherit from it – e.g., `hostgroups` have `hostgroup_members`.
+
+This does make it easier to have multiple inheritance, where a parent `hostgroup`
+may monitor a web service, and another parent will monitor a database service,
+and then a `host` child can belong to both of these `hostgroup`s.  However, it
+is generally a good idea to combine `hostgroups` into logical combinations of
+services at a high level, so that `hosts` do not have to have many parents; this
+will make maintenance much easier.
+
+### Contacts
+
+New users to contact should be added to the [objects/contacts.cfg](objects/contacts.cfg)
+file.  By default, these should be added to the `admins` group, for 24-7
+monitoring.  You can create new groups if you need more granular controls.
+
+### Services
+
+There is a default service named `generic-service` which all services extend.
+This sets a default of 24-7 monitoring, hourly notifications, 15 minute check
+intervals, etc. All of the other services extend this service. This is defined
+in [objects/services.cfg](objects/services.cfg).
+
+The services that we can monitor by default include if the host is alive, the
+load, the webserver is responding, and so on. These are defined in
+[objects/hostgroups.cfg](objects/hostgroups.cfg) since they must come after the
+`hostgroups` in the load order.
+
+### Default Host Groups
+
+Hostgroups and their checks are set in [objects/hostgroups.cfg](objects/hostgroups.cfg):
 
 * `server`: only basic checks: ping, load
 * `webserver`: `server` + httpd, mysql
