@@ -159,7 +159,7 @@ make all
 dpkg-buildpackage
 ```
 
-The last step will leave us several packages we can install in the parent
+The previous step will leave us several packages we can install in the parent
 directory.  We'll want to install the server one package, the name might be
 slightly different on your system:
 
@@ -167,7 +167,14 @@ slightly different on your system:
 dpkg -i nagios-nrpe-server_2.15-1ubuntu1_amd64.deb
 ```
 
-Once that's installed, edit `/etc/nagios/nrpe.cfg` to add your Nagios server's
+Now that NRPE is installed, we want to make sure it's not overwritten by a later
+update, so we need to mark them as such.
+
+```
+apt-mark hold nagios-nrpe-server
+```
+
+Once that's done, edit `/etc/nagios/nrpe.cfg` to add your Nagios server's
 IP address, so we can connect to NRPE from another box.
 
 ```
