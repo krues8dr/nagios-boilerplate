@@ -125,6 +125,9 @@ Download the source for nrpe from APT.
 apt-get source nagios-nrpe-server
 ```
 
+You may receive some warnings when downloading (statements prefaced with `W:` at
+the beginning of the line).  These are normal and shouldn't cause any problems.
+
 Go into the directory this created (named something like `nagios-nrpe-2.15`).
 Edit the `debian/rules` file inside. Look for `override_dh_auto_configure`, and
 add `--enable-command-args` to the end.  Don't forget to add the `\` at the end
