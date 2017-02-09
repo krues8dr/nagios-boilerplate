@@ -45,7 +45,9 @@ Hostgroups and their checks are set in [objects/hostgroups.cfg](objects/hostgrou
 ## Add a Host to Monitor
 
 To setup a new host, copy the [hosts/hosts.cfg.sample](hosts/hosts.cfg.sample)
-file to `hosts/mysite.com.cfg` and enter your custom values.
+file to `hosts/mysite.com.cfg` and enter your custom values. All hosts need a
+default `check_command` to determine if the host is `up`, we use `check-host-alive`
+which uses `ping` by default.
 
 You'll need to reload the nagios config afterwards. If your installation
 includes the standard service manager (upstart, etc), you can run `reload`,
